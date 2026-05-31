@@ -1,66 +1,114 @@
-/* --- TAREA DEA-9: REJILLA DE EMPLEADOS (CSS GRID) --- */
-
-#lista-empleados {
-    display: grid;
-    /* "Crea columnas automáticas. Cada una mide mínimo 280px. Si caben más, se ponen al lado; si no, bajan solas" */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 20px; /* Separación entre las tarjetas */
-    padding: 20px 0;
+/* --- MAQUETACIÓN DE LA CABECERA (ETIQUETA DIRECTA) --- */
+header {
+    background-color: #0052cc; 
+    padding: 15px 40px;
+    display: flex;
+    flex-direction: row;        /* Pone el título y el botón en la misma línea */
+    justify-content: space-between; /* Empuja el título a la izquierda y el botón a la derecha */
+    align-items: center;        /* Los centra verticalmente de forma perfecta */
+    margin-bottom: 40px;        /* Espacio de separación con el listado de abajo */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
 }
 
-/* La tarjeta de cada empleado individual */
+header h1 {
+    color: #ffffff;
+    font-size: 24px;
+}
+
+/* El botón de cerrar sesión específico */
+#btn-logout {
+    width: auto; 
+    background-color: #d32f2f; 
+    padding: 10px 20px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#btn-logout:hover {
+    background-color: #b71c1c;
+}
+
+/* --- TÍTULO DE LA SECCIÓN (ETIQUETA DIRECTA) --- */
+main h2 {
+    text-align: center;         /* ¡Centra el texto "Listado de Empleados"! */
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* --- BARRA DE BOTONES DE FILTRO (FLEXBOX CENTRADO) --- */
+#filtros {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;    /* Centra la botonera alfabética en la pantalla */
+    flex-wrap: wrap;     
+    gap: 8px;          
+    margin-bottom: 30px;
+    padding: 0 20px;
+    width: 100%;         
+}
+
+#filtros button {
+    width: auto;                /* Rompe el 100% general */
+    background-color: #e3f2fd;
+    color: #0052cc;
+    border: 1px solid #bbdefb;
+    padding: 8px 16px;   
+    border-radius: 6px;   
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+#filtros button:hover {
+    background-color: #0052cc;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* --- REJILLA DE EMPLEADOS (CSS GRID) --- */
+#lista-empleados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 25px; 
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
 .tarjeta-empleado {
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 16px;
-    text-align: center; /* Centramos textos y avatar */
+    padding: 20px;
+    text-align: center; 
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
 }
 
-/* Para que el robot deje de ser gigante */
+.tarjeta-empleado:hover {
+    transform: translateY(-5px);
+}
+
 .tarjeta-empleado img {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* Lo hace completamente redondo */
+    border-radius: 50%; 
     background-color: #f5f5f5;
     margin-bottom: 12px;
     object-fit: cover;
 }
 
-/* Espaciado para que los textos de la tarjeta no se peguen entre sí */
 .tarjeta-empleado p {
-    margin: 6px 0;      /* Añade un pequeño hueco arriba y abajo de cada texto */
-    font-size: 14px;    /* Hace la letra un pelín más compacta y elegante */
-    color: #444444;     /* Un gris oscuro que cansa menos la vista que el negro puro */
-}
-
-
-/* --- BARRA DE BOTONES DE FILTRO (FLEXBOX) --- */
-
-#filtros {
-    display: flex;
-    flex-direction: row; /* Fuerza a que se pongan en fila de izquierda a derecha */
-    flex-wrap: wrap;     /* Si no caben en móviles, saltan abajo */
-    gap: 10px;           /* Separación de 10 píxeles entre botones */
-    margin-bottom: 25px;
-    width: 100%;         /* Que la barra ocupe el ancho disponible */
-}
-
-#filtros button {
-    background-color: #f0f0f0;
-    color: #333333;
-    border: none;
-    padding: 10px 20px;   /* Un poquito más de espacio dentro para que sean cómodos de pulsar */
-    border-radius: 6px;   /* Esquinas un pelo más redondas */
-    cursor: pointer;
-    font-weight: bold;
-    display: inline-block; /* Evita que el botón intente ocupar toda la línea para él solo */
-    transition: background-color 0.2s ease;
-}
-
-/* El efecto cuando pasas el ratón por encima del botón */
-#filtros button:hover {
-    background-color: #007bff;
-    color: white;
+    margin: 6px 0;      
+    font-size: 14px;    
+    color: #444444;     
 }

@@ -31,7 +31,8 @@
     border-radius: 4px;
 }
 
-button {
+/* El botón grande de entrar */
+.caja-login button {
     width: 100%;
     padding: 10px;
     background-color: #0052cc;
@@ -40,9 +41,10 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.2s;
 }
 
-button:hover {
+.caja-login button:hover {
     background-color: #003d99;
 }
 
