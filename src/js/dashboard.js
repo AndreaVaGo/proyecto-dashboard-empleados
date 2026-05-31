@@ -1,11 +1,25 @@
-
 import { obtenerEmpleados } from './api.js';
 
-
-document.addEventListener("DOMContentLoaded", async () => {
+window.onload = async () => {
+    
     
     const listaDeEmpleados = await obtenerEmpleados();
+    const contenedorHTML = document.getElementById("lista-empleados");
     
+    listaDeEmpleados.forEach(empleado => {
+        const parrafoNuevo = document.createElement("p");
+        parrafoNuevo.textContent = `Nombre: ${empleado.name} | Email: ${empleado.email}`;
+        contenedorHTML.appendChild(parrafoNuevo);
+    });
+
     
-    console.log("Los empleados:", listaDeEmpleados);
-});
+    const botonSalir = document.getElementById("btn-logout");
+
+    botonSalir.addEventListener("click", () => {
+        
+        localStorage.clear(); 
+        
+        window.location.href = "index.html"; 
+    });
+    
+}; 
