@@ -1,0 +1,66 @@
+/* --- TAREA DEA-9: REJILLA DE EMPLEADOS (CSS GRID) --- */
+
+#lista-empleados {
+    display: grid;
+    /* "Crea columnas automáticas. Cada una mide mínimo 280px. Si caben más, se ponen al lado; si no, bajan solas" */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 20px; /* Separación entre las tarjetas */
+    padding: 20px 0;
+}
+
+/* La tarjeta de cada empleado individual */
+.tarjeta-empleado {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center; /* Centramos textos y avatar */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Para que el robot deje de ser gigante */
+.tarjeta-empleado img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Lo hace completamente redondo */
+    background-color: #f5f5f5;
+    margin-bottom: 12px;
+    object-fit: cover;
+}
+
+/* Espaciado para que los textos de la tarjeta no se peguen entre sí */
+.tarjeta-empleado p {
+    margin: 6px 0;      /* Añade un pequeño hueco arriba y abajo de cada texto */
+    font-size: 14px;    /* Hace la letra un pelín más compacta y elegante */
+    color: #444444;     /* Un gris oscuro que cansa menos la vista que el negro puro */
+}
+
+
+/* --- BARRA DE BOTONES DE FILTRO (FLEXBOX) --- */
+
+#filtros {
+    display: flex;
+    flex-direction: row; /* Fuerza a que se pongan en fila de izquierda a derecha */
+    flex-wrap: wrap;     /* Si no caben en móviles, saltan abajo */
+    gap: 10px;           /* Separación de 10 píxeles entre botones */
+    margin-bottom: 25px;
+    width: 100%;         /* Que la barra ocupe el ancho disponible */
+}
+
+#filtros button {
+    background-color: #f0f0f0;
+    color: #333333;
+    border: none;
+    padding: 10px 20px;   /* Un poquito más de espacio dentro para que sean cómodos de pulsar */
+    border-radius: 6px;   /* Esquinas un pelo más redondas */
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-block; /* Evita que el botón intente ocupar toda la línea para él solo */
+    transition: background-color 0.2s ease;
+}
+
+/* El efecto cuando pasas el ratón por encima del botón */
+#filtros button:hover {
+    background-color: #007bff;
+    color: white;
+}
