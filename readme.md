@@ -6,7 +6,7 @@ Esta aplicación es un panel de administración dinámico y modular desarrollado
 ---
 
 ## 🛠️ Tecnologías y Herramientas
-* **Diseño y Prototipado:** Figma (Asistido por IA generativa para el calco y la sincronización exacta de la interfaz a partir del desarrollo en código).
+* **Diseño y Prototipado:** Lovable (Generación ágil de la interfaz y flujo interactivo del sistema).
 * **Tecnologías Core:** HTML5 Semántico, CSS3 Estructurado de forma Modular (`@import`) usando Flexbox y CSS Grid.
 * **Entorno de Testing:** Vitest para la ejecución automatizada de pruebas unitarias de lógica de negocio.
 * **Control de Versiones:** Git bajo la metodología de *Conventional Commits* alojado en GitHub.
@@ -15,8 +15,8 @@ Esta aplicación es un panel de administración dinámico y modular desarrollado
 ---
 
 ## 🎨 Prototipo, Despliegue y Userflow
-* **Enlace al Prototipo en Figma:** [Haz clic aquí para acceder al prototipo en Figma]([PEGA_AQUÍ_TU_ENLACE_DE_FIGMA])
-* **Enlace del Despliegue en Producción (GitHub Pages):** 👉 [Haz clic aquí para ver la aplicación en producción]([PEGA_AQUÍ_TU_ENLACE_DE_GITHUB_PAGES])
+* **Enlace al Prototipo en Lovable:** [Haz clic aquí para acceder al prototipo interactivo en Lovable](https://id-preview-9b0ab2ae--91be1556-9d41-4a82-b07e-bdb22bd2371c.lovable.app/login)
+* **Enlace del Despliegue en Producción (GitHub Pages):** 👉 [Haz clic aquí para ver la aplicación en producción](https://andreavago.github.io/proyecto-dashboard-empleados//)
 
 ### Userflow del Sistema:
 1. El Administrador accede a la pantalla de Login (`index.html`).
@@ -30,13 +30,17 @@ Esta aplicación es un panel de administración dinámico y modular desarrollado
 ## 📈 Historial de Desarrollo y Control de Versiones (Git)
 El proyecto se ha desarrollado siguiendo la convención internacional de **Conventional Commits**, garantizando un historial de desarrollo atómico, limpio y profesional:
 
-* `docs: añadir .gitignore y captura de pantalla de vitest en assets` -> Inclusión de evidencias técnicas y exclusión de archivos.
+* `docs: actualizar entregables con enlaces definitivos de lovable y github pages` -> Sincronización del archivo README final con todas las URLs de entrega operativas.
+* `docs: guardar avance del README estructurado y correcciones de diseño en el dashboard` -> Registro del progreso de la documentación de la interfaz y estilos.
+* `style: adaptar selectores a etiquetas nativas, centrar titulo y alinear cabecera` -> Refactorización de la capa estética y alineaciones en el panel.
+* `fix: corregir ruta del script, añadir type module e implementar redireccion del login al dashboard` -> Resolución de bugs de enrutamiento y cambio a módulos nativos de JS.
+* `docs: añadir .gitignore y captura de pantalla de vitest en assets` -> Inclusión de evidencias técnicas y exclusión de archivos temporales.
 * `test: implementar pruebas unitarias con vitest para la validacion del login` -> Cobertura de pruebas automatizadas del flujo de acceso.
 * `feat: logica de filtros por letra y comentarios explicativos completados` -> Renderizado de botonera alfabética y filtrado interactivo en el DOM.
 * `docs: añadir comentarios explicativos en login, api y dashboard` -> Documentación técnica interna del código fuente.
 * `feat: implementar boton de cerrar sesion en el dashboard` -> Gestión del ciclo de vida del borrado del `localStorage`.
 * `feat: estructura inicial del dashboard y configuracion de la api` -> Integración asíncrona de `fetch` con JSONPlaceholder.
-* `feat: implementar logica de validacion de credenciales en auth.js` -> Captura de eventos del formulario y reglas lógicas.
+* `feat: implementar logica de validacion de credenciales en auth.js` -> Captura de eventos del formulario y reglas lógicas de seguridad.
 * `cs: modular CSS` -> Arquitectura de estilos desacoplada y limpia usando directivas `@import`.
 * `feat: estructura semantica inicial del formulario de login en index.html` -> Maquetación base con etiquetas accesibles de HTML5.
 
