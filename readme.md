@@ -39,6 +39,7 @@ El diseño arquitectónico visual de la aplicación se planificó distinguiendo 
 ## 📈 Historial de Desarrollo y Control de Versiones (Git)
 El proyecto se ha desarrollado siguiendo la convención internacional de **Conventional Commits**, garantizando un historial de desarrollo atómico, limpio y profesional:
 
+* `docs: corregir errores y actualizar evidencias en el readme` -> Ajustes finales en la documentación, corrección de erratas e inclusión de las capturas de Playwright.
 * `test: implementar caso de prueba E2E con Playwright para el flujo de login` -> Automatización de la verificación de acceso y redirección correcta al dashboard.
 * `docs: integrar la HU-05 de seguridad y control de acceso en el readme` -> Sincronización de la quinta historia de usuario y actualización de la documentación del repositorio.
 * `docs: actualizar readme y añadir wireframes de las vistas` -> Sincronización final de la documentación con las capturas de diseño y optimización de contenido.
@@ -57,12 +58,6 @@ El proyecto se ha desarrollado siguiendo la convención internacional de **Conve
 * `feat: estructura semantica inicial del formulario de login en index.html` -> Maquetación base de la vista de acceso empleando etiquetas accesibles de HTML5.
 
 ---
-
-## 🧪 Evidencias de Testing (Vitest)
-Se han diseñado e implementado pruebas unitarias destinadas a blindar la seguridad del acceso. Los casos contemplan la validación de cadenas de texto para correos institucionales y contraseñas seguras. El profesor puede comprobar el resultado exitoso en la siguiente captura:
-
-![Resultado de los Tests Automatizados](./src/assets/test-vitest.png)
-
 
 ## 🧪 Evidencias de Testing
 
