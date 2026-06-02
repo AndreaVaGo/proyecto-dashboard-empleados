@@ -6,7 +6,7 @@ Esta aplicación es un panel de administración dinámico y modular desarrollado
 ---
 
 ## 🛠️ Tecnologías y Herramientas
-* **Diseño y Prototipado:** Lovable (Generación ágil de la interfaz y flujo interactivo del sistema).
+* **Diseño y Prototipado:** Lovable, Figma & Stitch (Generación ágil de la interfaz, wireframes y flujo interactivo del sistema).
 * **Tecnologías Core:** HTML5 Semántico, CSS3 Estructurado de forma Modular (`@import`) usando Flexbox y CSS Grid.
 * **Entorno de Testing:** Vitest para la ejecución automatizada de pruebas unitarias de lógica de negocio.
 * **Control de Versiones:** Git bajo la metodología de *Conventional Commits* alojado en GitHub.
@@ -16,7 +16,16 @@ Esta aplicación es un panel de administración dinámico y modular desarrollado
 
 ## 🎨 Prototipo, Despliegue y Userflow
 * **Enlace al Prototipo en Lovable:** [Haz clic aquí para acceder al prototipo interactivo en Lovable](https://id-preview-9b0ab2ae--91be1556-9d41-4a82-b07e-bdb22bd2371c.lovable.app/login)
-* **Enlace del Despliegue en Producción (GitHub Pages):** 👉 [Haz clic aquí para ver la aplicación en producción](https://andreavago.github.io/proyecto-dashboard-empleados//)
+* **Enlace del Despliegue en Producción (GitHub Pages):** 👉 [Haz clic aquí para ver la aplicación en producción](https://andreavago.github.io/proyecto-dashboard-empleados/)
+
+### 📐 Wireframes
+El diseño arquitectónico visual de la aplicación se planificó distinguiendo la interfaz de acceso respecto al panel privado de operaciones:
+
+#### 1. Estructura de la Pantalla de Login (`index.html`)
+![Wireframe - Formulario de Login](./src/assets/wireframe_login.png)
+
+#### 2. Estructura del Panel de Administración (`dashboard.html`)
+![Wireframe - Panel de Gestión de Empleados](./src/assets/wireframe_panel_administracion.png)
 
 ### Userflow del Sistema:
 1. El Administrador accede a la pantalla de Login (`index.html`).
@@ -30,7 +39,7 @@ Esta aplicación es un panel de administración dinámico y modular desarrollado
 ## 📈 Historial de Desarrollo y Control de Versiones (Git)
 El proyecto se ha desarrollado siguiendo la convención internacional de **Conventional Commits**, garantizando un historial de desarrollo atómico, limpio y profesional:
 
-* `docs: actualizar entregables con enlaces definitivos de lovable y github pages` -> Sincronización del archivo README final con todas las URLs de entrega operativas.
+* `docs: enlazar los wireframes oficiales de diseño en el archivo readme` -> Incorporación y mapeo de las imágenes de prototipado final en la documentación.
 * `docs: guardar avance del README estructurado y correcciones de diseño en el dashboard` -> Registro del progreso de la documentación de la interfaz y estilos.
 * `style: adaptar selectores a etiquetas nativas, centrar titulo y alinear cabecera` -> Refactorización de la capa estética y alineaciones en el panel.
 * `fix: corregir ruta del script, añadir type module e implementar redireccion del login al dashboard` -> Resolución de bugs de enrutamiento y cambio a módulos nativos de JS.
@@ -54,10 +63,10 @@ Se han diseñado e implementado pruebas unitarias destinadas a blindar la seguri
 ---
 
 ## 📅 Planificación del Proyecto (Jira)
-El ciclo de vida del desarrollo se ha gestionado empleando metodologías ágiles a través de la herramienta **Jira Software**, organizando los requerimientos funcionales en historias de usuario estimadas con sus respectivas fechas de inicio y vencimiento dentro del Sprint.
+El ciclo de vida del desarrollo se ha gestionado empleando metodologías ágiles a través de la herramienta **Jira Software**, organizando los requerimientos funcionales en historias de usuario estimadas con sus respectivas fechas de inicio y vencimiento dentro del Sprint de la semana.
 
 * **Evidencia del Tablero de Jira:**
-![Planificación de Tareas en Jira](./src/assets/jira-cronograma.png)
+![Planificación de Tareas en Jira](./src/assets/jira.png)
 
 ---
 
