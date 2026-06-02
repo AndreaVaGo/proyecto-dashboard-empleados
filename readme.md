@@ -39,19 +39,21 @@ El diseño arquitectónico visual de la aplicación se planificó distinguiendo 
 ## 📈 Historial de Desarrollo y Control de Versiones (Git)
 El proyecto se ha desarrollado siguiendo la convención internacional de **Conventional Commits**, garantizando un historial de desarrollo atómico, limpio y profesional:
 
-* `docs: enlazar los wireframes oficiales de diseño en el archivo readme` -> Incorporación y mapeo de las imágenes de prototipado final en la documentación.
-* `docs: guardar avance del README estructurado y correcciones de diseño en el dashboard` -> Registro del progreso de la documentación de la interfaz y estilos.
-* `style: adaptar selectores a etiquetas nativas, centrar titulo y alinear cabecera` -> Refactorización de la capa estética y alineaciones en el panel.
-* `fix: corregir ruta del script, añadir type module e implementar redireccion del login al dashboard` -> Resolución de bugs de enrutamiento y cambio a módulos nativos de JS.
-* `docs: añadir .gitignore y captura de pantalla de vitest en assets` -> Inclusión de evidencias técnicas y exclusión de archivos temporales.
-* `test: implementar pruebas unitarias con vitest para la validacion del login` -> Cobertura de pruebas automatizadas del flujo de acceso.
-* `feat: logica de filtros por letra y comentarios explicativos completados` -> Renderizado de botonera alfabética y filtrado interactivo en el DOM.
-* `docs: añadir comentarios explicativos en login, api y dashboard` -> Documentación técnica interna del código fuente.
-* `feat: implementar boton de cerrar sesion en el dashboard` -> Gestión del ciclo de vida del borrado del `localStorage`.
-* `feat: estructura inicial del dashboard y configuracion de la api` -> Integración asíncrona de `fetch` con JSONPlaceholder.
-* `feat: implementar logica de validacion de credenciales en auth.js` -> Captura de eventos del formulario y reglas lógicas de seguridad.
-* `cs: modular CSS` -> Arquitectura de estilos desacoplada y limpia usando directivas `@import`.
-* `feat: estructura semantica inicial del formulario de login en index.html` -> Maquetación base con etiquetas accesibles de HTML5.
+* `docs: integrar la HU-05 de seguridad y control de acceso en el readme` -> Sincronización de la quinta historia de usuario y actualización de la documentación del repositorio.
+* `docs: actualizar readme y añadir wireframes de las vistas` -> Sincronización final de la documentación con las capturas de diseño y optimización de contenido.
+* `docs: actualizar entregables con enlaces definitivos de lovable y github pages` -> Configuración y enlace a los entornos estables de producción en la nube.
+* `docs: guardar avance del README estructurado y correcciones de diseño en el dashboard` -> Registro del progreso de la estructura del documento guía del proyecto.
+* `style: adaptar selectores a etiquetas nativas, centrar titulo y alinear cabecera` -> Limpieza y optimización visual del diseño del panel administrativo.
+* `fix: corregir ruta del script, añadir type module e implementar redireccion del login al dashboard` -> Resolución del bug de enrutamiento y cambio hacia módulos nativos de JS.
+* `docs: añadir .gitignore y captura de pantalla de vitest en assets` -> Inclusión de configuraciones de exclusión de ficheros y almacenamiento de evidencias técnicas.
+* `test: implementar pruebas unitarias con vitest para la validacion del login` -> Desarrollo de la suite de tests automatizados para validar correos y contraseñas seguras.
+* `feat: logica de filtros por letra y comentarios explicativos completados` -> Renderizado dinámico de la botonera alfabética y captura del evento de filtrado en el DOM.
+* `docs: añadir comentarios explicativos en login, api y dashboard` -> Incorporación de documentación interna del código fuente para mejorar el mantenimiento.
+* `feat: implementar boton de cerrar sesion en el dashboard` -> Gestión del ciclo de vida de la sesión mediante el borrado controlado del almacenamiento local.
+* `feat: estructura inicial del dashboard y configuracion de la api` -> Implementación de la petición asíncrona con fetch y mapeo de los datos del personal.
+* `feat: implementar logica de validacion de credenciales en auth.js` -> Captura y procesamiento de las reglas del formulario de acceso.
+* `cs: modular CSS` -> Arquitectura de estilos desacoplada y limpia organizada mediante directivas nativas de importación.
+* `feat: estructura semantica inicial del formulario de login en index.html` -> Maquetación base de la vista de acceso empleando etiquetas accesibles de HTML5.
 
 ---
 
@@ -95,6 +97,13 @@ El ciclo de vida del desarrollo se ha gestionado empleando metodologías ágiles
 * **Quiero:** Disponer de una opción clara para cerrar mi sesión en la cabecera.
 * **Para:** Revocar los permisos de acceso al abandonar el equipo de trabajo.
 * **Criterios de Aceptación:** Botón dedicado que limpia las claves de sesión del almacenamiento local y redirige de manera forzosa al usuario al portal de login, bloqueando el reingreso directo por URL.
+
+
+### HU-05: Control de Acceso y Redirección de Seguridad
+* **Como:** Administrador del sistema.
+* **Quiero:** Que la aplicación impida el acceso directo al panel privado si no existe una sesión activa en el navegador.
+* **Para:** Proteger la confidencialidad de los datos del personal y evitar accesos no autorizados a través de la URL.
+* **Criterios de Aceptación:** Al inicializarse el archivo `dashboard.html`, se evalúa mediante una estructura condicional la existencia de la clave de usuario en el `localStorage`. En caso de que el almacenamiento local se encuentre vacío, la aplicación intercepta la carga y ejecuta una redirección forzosa e inmediata hacia la pantalla de login principal (`index.html`).
 
 ---
 
