@@ -39,6 +39,7 @@ El diseño arquitectónico visual de la aplicación se planificó distinguiendo 
 ## 📈 Historial de Desarrollo y Control de Versiones (Git)
 El proyecto se ha desarrollado siguiendo la convención internacional de **Conventional Commits**, garantizando un historial de desarrollo atómico, limpio y profesional:
 
+* `test: implementar caso de prueba E2E con Playwright para el flujo de login` -> Automatización de la verificación de acceso y redirección correcta al dashboard.
 * `docs: integrar la HU-05 de seguridad y control de acceso en el readme` -> Sincronización de la quinta historia de usuario y actualización de la documentación del repositorio.
 * `docs: actualizar readme y añadir wireframes de las vistas` -> Sincronización final de la documentación con las capturas de diseño y optimización de contenido.
 * `docs: actualizar entregables con enlaces definitivos de lovable y github pages` -> Configuración y enlace a los entornos estables de producción en la nube.
@@ -47,12 +48,12 @@ El proyecto se ha desarrollado siguiendo la convención internacional de **Conve
 * `fix: corregir ruta del script, añadir type module e implementar redireccion del login al dashboard` -> Resolución del bug de enrutamiento y cambio hacia módulos nativos de JS.
 * `docs: añadir .gitignore y captura de pantalla de vitest en assets` -> Inclusión de configuraciones de exclusión de ficheros y almacenamiento de evidencias técnicas.
 * `test: implementar pruebas unitarias con vitest para la validacion del login` -> Desarrollo de la suite de tests automatizados para validar correos y contraseñas seguras.
-* `feat: logica de filtros por letra y comentarios explicativos completados` -> Renderizado dinámico de la botonera alfabética y captura del evento de filtrado en el DOM.
+* `feat: lógica de filtros por letra y comentarios explicativos completados` -> Renderizado dinámico de la botonera alfabética y captura del evento de filtrado en el DOM.
 * `docs: añadir comentarios explicativos en login, api y dashboard` -> Incorporación de documentación interna del código fuente para mejorar el mantenimiento.
 * `feat: implementar boton de cerrar sesion en el dashboard` -> Gestión del ciclo de vida de la sesión mediante el borrado controlado del almacenamiento local.
 * `feat: estructura inicial del dashboard y configuracion de la api` -> Implementación de la petición asíncrona con fetch y mapeo de los datos del personal.
 * `feat: implementar logica de validacion de credenciales en auth.js` -> Captura y procesamiento de las reglas del formulario de acceso.
-* `cs: modular CSS` -> Arquitectura de estilos desacoplada y limpia organizada mediante directivas nativas de importación.
+* `style: implementar diseño responsivo y estilos globales con Tailwind CSS` -> Configuración del framework e integración de clases utilitarias para la interfaz.
 * `feat: estructura semantica inicial del formulario de login en index.html` -> Maquetación base de la vista de acceso empleando etiquetas accesibles de HTML5.
 
 ---
@@ -61,6 +62,18 @@ El proyecto se ha desarrollado siguiendo la convención internacional de **Conve
 Se han diseñado e implementado pruebas unitarias destinadas a blindar la seguridad del acceso. Los casos contemplan la validación de cadenas de texto para correos institucionales y contraseñas seguras. El profesor puede comprobar el resultado exitoso en la siguiente captura:
 
 ![Resultado de los Tests Automatizados](./src/assets/test-vitest.png)
+
+
+## 🧪 Evidencias de Testing
+
+### 🟢 Pruebas Unitarias (Vitest)
+Se han diseñado e implementado pruebas unitarias destinadas a blindar la seguridad del acceso analizando la validación de strings para correos y contraseñas seguras:
+![Resultado de los Tests Automatizados con Vitest](./src/assets/test-vitest.png)
+
+
+### 🎭 Pruebas End-to-End (Playwright)
+Se ha automatizado el flujo completo de usuario de manera real empleando Playwright, simulando la carga del login, la inserción de credenciales, el clic de envío y verificando la redirección exitosa al panel privado:
+![Resultado del Test E2E con Playwright](./src/assets/test-playwright.png)
 
 ---
 

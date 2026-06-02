@@ -1,0 +1,23 @@
+{
+  "name": "proyecto-dashboard-empleados",
+  "version": "1.0.0",
+  "description": "Esta aplicación es un panel de administración dinámico y modular desarrollado íntegramente con **JavaScript Vanilla**. Permite a un usuario administrador autenticarse de forma segura mediante reglas estrictas de validación, visualizar un listado detallado de empleados consumido en tiempo real desde una API REST externa, realizar filtrados interactivos por la inicial del nombre y gestionar de forma segura el ciclo de vida de la sesión mediante almacenamiento local (`localStorage`).",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaVaGo/proyecto-dashboard-empleados.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AndreaVaGo/proyecto-dashboard-empleados/issues"
+  },
+  "homepage": "https://github.com/AndreaVaGo/proyecto-dashboard-empleados#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
