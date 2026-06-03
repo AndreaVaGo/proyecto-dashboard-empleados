@@ -52,6 +52,7 @@ El sistema cuenta con dos estados principales: el flujo de acceso (público) y e
 ### 🗺️ Diagrama Visual del Flujo
 A continuación se detalla gráficamente el comportamiento de la aplicación según el estado de autenticación del usuario y las interacciones disponibles:
 
+```text
 [ INICIO ]
    │
    ▼
@@ -119,6 +120,7 @@ El usuario rellena el formulario (Email y Contraseña)
                                                          │
                                                          ▼
                                                [ REDIRECCIÓN AL LOGIN ] ──► Envía de vuelta a 'index.html'
+```
 
 ### 📝 Explicación del Proceso Paso a Paso
 
