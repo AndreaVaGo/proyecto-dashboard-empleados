@@ -1,14 +1,15 @@
 # 📊 Dashboard Administrativo de Gestión de Empleados
 
 ## 📝 Descripción del Proyecto
-Esta aplicación es un panel de administración dinámico y modular desarrollado íntegramente con **JavaScript Vanilla**. Permite a un usuario administrador autenticarse de forma segura mediante reglas estrictas de validación, visualizar un listado detallado de empleados consumido en tiempo real desde una API REST externa, realizar filtrados interactivos por la inicial del nombre y gestionar de forma segura el ciclo de vida de la sesión mediante almacenamiento local (`localStorage`).
+Esta aplicación es un panel de administración dinámico y modular desarrollado íntegramente con **JavaScript Vanilla** y estilizado con **Tailwind CSS**. Permite a un usuario administrador autenticarse de forma segura mediante reglas estrictas de validación, visualizar un listado detallado de empleados consumido en tiempo real desde una API REST externa, realizar filtrados interactivos por la inicial del nombre y gestionar de forma segura el ciclo de vida de la sesión mediante almacenamiento local (`localStorage`).
 
 ---
 
 ## 🛠️ Tecnologías y Herramientas
 * **Diseño y Prototipado:** Lovable, Figma & Stitch (Generación ágil de la interfaz, wireframes y flujo interactivo del sistema).
-* **Tecnologías Core:** HTML5 Semántico, CSS3 Estructurado de forma Modular (`@import`) usando Flexbox y CSS Grid.
-* **Entorno de Testing:** Vitest para la ejecución automatizada de pruebas unitarias de lógica de negocio.
+* **Tecnologías Core:** HTML5 Semántico y JavaScript Vanilla (ES6+).
+* **Estilos y Maquetación:** Tailwind CSS (Framework de CSS utilitario para un diseño ágil, responsivo y adaptativo mediante Flexbox y CSS Grid).
+* **Entorno de Testing:** Vitest para la ejecución automatizada de pruebas unitarias de lógica de negocio y Playwright para pruebas End-to-End (E2E).
 * **Control de Versiones:** Git bajo la metodología de *Conventional Commits* alojado en GitHub.
 * **Gestión del Proyecto:** Jira Software (Metodología Agile/Scrum).
 
@@ -18,27 +19,137 @@ Esta aplicación es un panel de administración dinámico y modular desarrollado
 * **Enlace al Prototipo en Lovable:** [Haz clic aquí para acceder al prototipo interactivo en Lovable](https://id-preview-9b0ab2ae--91be1556-9d41-4a82-b07e-bdb22bd2371c.lovable.app/login)
 * **Enlace del Despliegue en Producción (GitHub Pages):** 👉 [Haz clic aquí para ver la aplicación en producción](https://andreavago.github.io/proyecto-dashboard-empleados/)
 
-### 📐 Wireframes
-El diseño arquitectónico visual de la aplicación se planificó distinguiendo la interfaz de acceso respecto al panel privado de operaciones:
+---
 
-#### 1. Estructura de la Pantalla de Login (`index.html`)
-![Wireframe - Formulario de Login](./src/assets/wireframe_login.png)
+## 📐 Wireframes (Diseño Adaptivo)
+La estructura y distribución visual de la aplicación se planificó bajo un enfoque de diseño minimalista de baja fidelidad (*wireframing* de alta abstracción), proyectando el comportamiento de la interfaz de forma completamente responsiva tanto para entornos de escritorio como para dispositivos móviles:
 
-#### 2. Estructura del Panel de Administración (`dashboard.html`)
-![Wireframe - Panel de Gestión de Empleados](./src/assets/wireframe_panel_administracion.png)
+### 🔐 1. Pantalla de Login (`index.html`)
+Su estructura plantea una distribución limpia con un contenedor simétrico centrado que optimiza la concentración del usuario en el formulario de acceso.
 
-### Userflow del Sistema:
-1. El Administrador accede a la pantalla de Login (`index.html`).
-2. Al enviar el formulario, el sistema intercepta el evento y valida las credenciales en el frontend.
-3. Si el correo contiene `@` y la contraseña posee $\ge 8$ caracteres con al menos un dígito numérico, genera un estado activo en `localStorage` y redirige a `dashboard.html`.
-4. En el panel, el sistema consume la API de manera asíncrona, dibuja las fichas de empleados en una rejilla adaptativa y permite el filtrado dinámico por iniciales.
-5. Al pulsar "Cerrar Sesión", se destruye el estado local de forma segura y se restringe el acceso volviendo al Login.
+* **Vista Desktop (Escritorio):**
+  ![Wireframe Login - Desktop](./src/assets/login-desktop.png)
+
+* **Vista Mobile (Móvil):**
+  ![Wireframe Login - Mobile](./src/assets/login-mobile.png)
+
+---
+
+### 📊 2. Panel de Administración (`dashboard.html`)
+Diseño modular basado en rejillas dinámicas (CSS Grid y Flexbox) que priorizan la jerarquía de la barra de acciones superior, la botonera de filtrado alfabético unificado (A-Z) y la disposición fluida de las tarjetas de empleados.
+
+* **Vista Desktop (Escritorio):**
+  ![Wireframe Panel - Desktop](./src/assets/panel-desktop.png)
+
+* **Vista Mobile (Móvil):**
+  ![Wireframe Panel - Mobile](./src/assets/panel-mobile.png)
+
+---
+## 🔄 Flujo de Usuario (Userflow)
+
+El sistema cuenta con dos estados principales: el flujo de acceso (público) y el panel de administración (privado), protegidos mediante el estado de la sesión en el almacenamiento local.
+
+### 🗺️ Diagrama Visual del Flujo
+A continuación se detalla gráficamente el comportamiento de la aplicación según el estado de autenticación del usuario y las interacciones disponibles:
+
+[ INICIO ]
+   │
+   ▼
+¿Existe la sesión activa en el navegador? (localStorage: 'usuarioLogueado')
+   │
+   ├───► SÍ ───► [ REDIRECCIÓN AUTOMÁTICA ] ───► (Saltar a zona DASHBOARD)
+   │
+   └───► NO
+         │
+         ▼
+[ PÁGINA DE LOGIN (index.html) ]
+         │
+         ▼
+El usuario rellena el formulario (Email y Contraseña)
+         │
+         ▼
+[ EVENTO: Click en botón "Ingresar" ]
+         │
+         ▼
+¿Cumple las reglas de validación?
+• Email contiene '@'
+• Contraseña >= 8 caracteres y mínimo 1 número
+         │
+         ├───► NO ───► [ MOSTRAR ERROR EN PANTALLA ] ──► (Permanece en Login)
+         │
+         └───► SÍ
+               │
+               ▼
+   [ REGISTRAR SESIÓN ] ───► Guarda el estado en localStorage
+               │
+               ▼
+   [ REDIRECCIÓN ] ───► Envía al usuario a 'dashboard.html'
+               │
+               └─────────────────────────┐
+                                         │
+                                         ▼
+                       [ PANEL PRIVADO (dashboard.html) ]
+                                         │
+                                         ▼
+                     [ CONTROL DE SEGURIDAD (HU-05) ]
+                     ¿Viene con sesión válida en localStorage?
+                                         │
+                                         ├───► NO ───► [ REDIRECCIÓN FORZOSA ] ──► (Vuelve a index.html)
+                                         │
+                                         └───► SÍ
+                                               │
+                                               ├─► [ PETICIÓN HTTP (Fetch) ] ──► Consume JSONPlaceholder (/users)
+                                               │                                         │
+                                               │                                         ▼
+                                               │                               [ RENDERIZAR EMPLEADOS ]
+                                               │                                Muestra las tarjetas con 
+                                               │                                Datos, Dirección y Avatar
+                                               │
+                                               ├─► [ INTERACCIÓN DE FILTRADO ] 
+                                               │    Click en Botonera Alfabética ──► Filtra array por inicial
+                                               │                                         │
+                                               │                                         ▼
+                                               │                               [ ACTUALIZAR REJILLA DOM ]
+                                               │
+                                               └─► [ EVENTO: CERRAR SESIÓN ]
+                                                    Click en botón "Logout"
+                                                         │
+                                                         ▼
+                                               [ LIMPIAR LOCALSTORAGE ]
+                                                         │
+                                                         ▼
+                                               [ REDIRECCIÓN AL LOGIN ] ──► Envía de vuelta a 'index.html'
+
+### 📝 Explicación del Proceso Paso a Paso
+
+1. **Control de Entrada (Filtro de Autenticación):**
+   * El usuario entra a la aplicación. El script comprueba de inmediato si existe la clave `usuarioLogueado` en el `localStorage`.
+   * Si existe, el usuario es redirigido de forma automática a `dashboard.html` sin pasar por el formulario de acceso.
+
+2. **Formulario de Login (index.html):**
+   * Si no hay sesión previa, el usuario introduce su correo y contraseña en la interfaz.
+   * Al hacer clic en "Ingresar", el sistema ejecuta las validaciones en el frontend: el formato de correo electrónico debe contener un patrón válido con `@`, y la contraseña debe poseer un tamaño mínimo de 8 caracteres junto con al menos un dígito numérico.
+   * **Credenciales incorrectas:** Se inyecta un mensaje de error dinámico en el DOM y se bloquea la navegación.
+   * **Credenciales correctas:** Se almacena de forma persistentente el token de estado en el `localStorage` y se activa la redirección.
+
+3. **Panel Administrativo (dashboard.html):**
+   * Al inicializarse la vista del panel, se despacha una petición asíncrona mediante `fetch` hacia el endpoint de la API REST externa `https://jsonplaceholder.typicode.com/users`.
+   * El archivo JSON recibido se procesa dinámicamente mapeando de forma obligatoria los atributos `name`, `email` y las propiedades internas de dirección (`street`, `suite`, `city` y `zipcode`) junto con un avatar representativo.
+
+4. **Interacción y Filtrado:**
+   * El administrador puede interactuar con una botonera alfabética completa (A-Z) integrada en la cabecera o seleccionar el botón "Todos" para restablecer la vista completa. Al capturar el evento de selección, la aplicación filtra la colección de datos original evaluando la inicial de la propiedad `name`, redibujando la rejilla de tarjetas en tiempo real de forma reactiva o mostrando un mensaje informativo si no existen coincidencias.
+
+5. **Cierre de Sesión (Logout):**
+   * Al accionar el botón de deslogueo, se destruye el registro guardado en el almacenamiento local y se fuerza el retorno hacia `index.html`, restringiendo por completo cualquier intento de reingreso por manipulación directa de la URL.
 
 ---
 
 ## 📈 Historial de Desarrollo y Control de Versiones (Git)
 El proyecto se ha desarrollado siguiendo la convención internacional de **Conventional Commits**, garantizando un historial de desarrollo atómico, limpio y profesional:
 
+* `refactor: estructurar wireframes adaptivos en versiones desktop y mobile` -> Sustitución de los esquemas visuales anteriores por diseños de baja fidelidad simplificados y adaptados a dispositivos móviles.
+* `refactor: ampliar botonera de filtros de la A a la Z y unificar lógica del DOM` -> Optimización del filtrado alfabético para abarcar el abecedario completo, inclusión del botón de restauración "Todos" y control de estados vacíos.
+* `docs: diseñar diagrama visual de flujo de usuario y mapeo paso a paso` -> Incorporación del mapa de navegación interactivo (Userflow) detallando el ciclo de vida de la sesión en el almacenamiento local.
 * `docs: corregir errores y actualizar evidencias en el readme` -> Ajustes finales en la documentación, corrección de erratas e inclusión de las capturas de Playwright.
 * `test: implementar caso de prueba E2E con Playwright para el flujo de login` -> Automatización de la verificación de acceso y redirección correcta al dashboard.
 * `docs: integrar la HU-05 de seguridad y control de acceso en el readme` -> Sincronización de la quinta historia de usuario y actualización de la documentación del repositorio.
@@ -56,7 +167,6 @@ El proyecto se ha desarrollado siguiendo la convención internacional de **Conve
 * `feat: implementar logica de validacion de credenciales en auth.js` -> Captura y procesamiento de las reglas del formulario de acceso.
 * `style: implementar diseño responsivo y estilos globales con Tailwind CSS` -> Configuración del framework e integración de clases utilitarias para la interfaz.
 * `feat: estructura semantica inicial del formulario de login en index.html` -> Maquetación base de la vista de acceso empleando etiquetas accesibles de HTML5.
-
 ---
 
 ## 🧪 Evidencias de Testing
@@ -64,7 +174,6 @@ El proyecto se ha desarrollado siguiendo la convención internacional de **Conve
 ### 🟢 Pruebas Unitarias (Vitest)
 Se han diseñado e implementado pruebas unitarias destinadas a blindar la seguridad del acceso analizando la validación de strings para correos y contraseñas seguras:
 ![Resultado de los Tests Automatizados con Vitest](./src/assets/test-vitest.png)
-
 
 ### 🎭 Pruebas End-to-End (Playwright)
 Se ha automatizado el flujo completo de usuario de manera real empleando Playwright, simulando la carga del login, la inserción de credenciales, el clic de envío y verificando la redirección exitosa al panel privado:
@@ -98,14 +207,13 @@ El ciclo de vida del desarrollo se ha gestionado empleando metodologías ágiles
 * **Como:** Administrador autenticado.
 * **Quiero:** Filtrar a los empleados por la primera letra de su nombre.
 * **Para:** Agilizar las búsquedas operativas diarias.
-* **Criterios de Aceptación:** Botonera interactiva alfabética. Al pulsar una letra, la rejilla del DOM se actualiza en tiempo real de forma reactiva sin recargar la página.
+* **Criterios de Aceptación:** Botonera interactiva con el abecedario completo (A-Z) y opción para restablecer ("Todos"). Al pulsar una letra, la rejilla del DOM se actualiza en tiempo real de forma reactiva sin recargar la página. Si no existen coincidencias con la inicial seleccionada, la aplicación debe mostrar un mensaje informativo indicando la ausencia de registros.
 
 ### HU-04: Cierre de Sesión Seguro (Logout)
 * **Como:** Administrador autenticado.
 * **Quiero:** Disponer de una opción clara para cerrar mi sesión en la cabecera.
 * **Para:** Revocar los permisos de acceso al abandonar el equipo de trabajo.
 * **Criterios de Aceptación:** Botón dedicado que limpia las claves de sesión del almacenamiento local y redirige de manera forzosa al usuario al portal de login, bloqueando el reingreso directo por URL.
-
 
 ### HU-05: Control de Acceso y Redirección de Seguridad
 * **Como:** Administrador del sistema.
