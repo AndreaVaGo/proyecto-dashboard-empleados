@@ -149,6 +149,10 @@ El usuario rellena el formulario (Email y Contraseña)
 ## 📈 Historial de Desarrollo y Control de Versiones (Git)
 El proyecto se ha desarrollado siguiendo la convención internacional de **Conventional Commits**, garantizando un historial de desarrollo atómico, limpio y profesional:
 
+* `docs: añadir sección de consideraciones de seguridad y arquitectura real` -> Incorporación del análisis técnico sobre la mitigación de brechas de seguridad y escalabilidad con JWT.
+* `docs: actualizar readme con los últimos commits` -> Reorganización de la estructura técnica del archivo de documentación para optimizar la legibilidad en Markdown.
+* `refactor: integrar guardián de seguridad para el control de acceso en el dashboard` -> Implementación del filtro estricto de sesión en el script del panel privado.
+* `feat: implementar consulta asíncrona a db/user.json para validar administrador único` -> Conexión modular local con el archivo de credenciales simuladas.
 * `refactor: estructurar wireframes adaptivos en versiones desktop y mobile` -> Sustitución de los esquemas visuales anteriores por diseños de baja fidelidad simplificados y adaptados a dispositivos móviles.
 * `refactor: ampliar botonera de filtros de la A a la Z y unificar lógica del DOM` -> Optimización del filtrado alfabético para abarcar el abecedario completo, inclusión del botón de restauración "Todos" y control de estados vacíos.
 * `docs: diseñar diagrama visual de flujo de usuario y mapeo paso a paso` -> Incorporación del mapa de navegación interactivo (Userflow) detallando el ciclo de vida de la sesión en el almacenamiento local.
@@ -169,6 +173,7 @@ El proyecto se ha desarrollado siguiendo la convención internacional de **Conve
 * `feat: implementar logica de validacion de credenciales en auth.js` -> Captura y procesamiento de las reglas del formulario de acceso.
 * `style: implementar diseño responsivo y estilos globales con Tailwind CSS` -> Configuración del framework e integración de clases utilitarias para la interfaz.
 * `feat: estructura semantica inicial del formulario de login en index.html` -> Maquetación base de la vista de acceso empleando etiquetas accesibles de HTML5.
+
 ---
 
 ## 🧪 Evidencias de Testing
@@ -222,6 +227,16 @@ El ciclo de vida del desarrollo se ha gestionado empleando metodologías ágiles
 * **Quiero:** Que la aplicación impida el acceso directo al panel privado si no existe una sesión activa en el navegador.
 * **Para:** Proteger la confidencialidad de los datos del personal y evitar accesos no autorizados a través de la URL.
 * **Criterios de Aceptación:** Al inicializarse el archivo `dashboard.html`, se evalúa mediante una estructura condicional la existencia de la clave de usuario en el `localStorage`. En caso de que el almacenamiento local se encuentre vacío, la aplicación intercepta la carga y ejecuta una redirección forzosa e inmediata hacia la pantalla de login principal (`index.html`) (Tareas vinculadas: `DEA-19`, `DEA-21`, `DEA-23`, `DEA-24`, `DEA-25`).
+---
+
+## 🔒 Consideraciones de Seguridad y Escalabilidad (Arquitectura Real)
+Aunque el sistema actual utiliza una simulación de base de datos local mediante `db/user.json` para cumplir con los requerimientos académicos de peticiones asíncronas en el frontend, se reconoce que este enfoque expone las credenciales en entornos de producción reales si el archivo es público.
+
+Para mitigar esta vulnerabilidad en un entorno profesional, la arquitectura se escalaría hacia un modelo seguro:
+* **Desacoplamiento Backend/Frontend:** Migración de la lógica de validación a un servidor seguro (como Node.js o Express) para que el navegador nunca tenga acceso directo a las credenciales.
+* **Cifrado de Credenciales:** Almacenamiento de contraseñas utilizando algoritmos de hashing seguro (`bcrypt`) en una base de datos aislada, impidiendo que se guarden en texto plano.
+* **Autenticación Basada en Tokens:** Implementación de tokens efímeros firmados digitalmente (`JSON Web Tokens - JWT`) para el control de acceso en el `dashboard.html`, sustituyendo la verificación simple por `localStorage`.
+
 ---
 
 ## ✍️ Autor
