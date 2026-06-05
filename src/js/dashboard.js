@@ -1,5 +1,17 @@
 import { obtenerEmpleados } from './api.js';
 
+// =========================================================================
+// 🛡️ GUARDIÁN DE SEGURIDAD (Ejecución inmediata antes de cargar nada)
+// =========================================================================
+const sesionActiva = localStorage.getItem("sesionActiva");
+
+if (!sesionActiva || sesionActiva !== "true") {
+    // Si no es el administrador autenticado, vaciamos por si acaso y redirigimos
+    localStorage.clear();
+    window.location.href = "index.html";
+}
+
+// Si pasa el guardián, se ejecuta tu aplicación con normalidad
 window.onload = async () => {
     
     // 1. Vamos a internet a por los 10 empleados y buscamos la caja blanca de la pantalla
@@ -92,12 +104,14 @@ window.onload = async () => {
     }
 
 
-    // 4. El botón de Cerrar Sesión de toda la vida
+    // 4. El botón de Cerrar Sesión de toda la vida (DEA-13)
     const botonSalir = document.getElementById("btn-logout");
     
-    botonSalir.addEventListener("click", () => {
-        localStorage.clear(); // Vaciamos el cajón de la memoria del navegador
-        window.location.href = "index.html"; // Nos vamos de patitas a la calle (al login)
-    });
+    if (botonSalir) {
+        botonSalir.addEventListener("click", () => {
+            localStorage.clear(); // Vaciamos el cajón de la memoria del navegador
+            window.location.href = "index.html"; // Nos vamos de patitas a la calle (al login)
+        });
+    }
     
 };
