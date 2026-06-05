@@ -193,36 +193,35 @@ El ciclo de vida del desarrollo se ha gestionado empleando metodologías ágiles
 
 ## 👤 Historias de Usuario y Criterios de Aceptación
 
-### HU-01: Acceso Seguro al Dashboard
+### DEA-1: Acceso al dashboard administrativo (HU-01)
 * **Como:** Usuario administrador.
 * **Quiero:** Un sistema de autenticación por email y contraseña.
 * **Para:** Restringir el panel exclusivamente a personal autorizado.
-* **Criterios de Aceptación:** Email con formato válido (`@`). Contraseña obligatoria de al menos 8 caracteres con mínimo un número. Redirección automática y persistencia inmediata en el navegador mediante `localStorage`.
+* **Criterios de Aceptación:** Email con formato válido (`@`). Contraseña obligatoria de al menos 8 caracteres con mínimo un número. Redirección automática y persistencia inmediata en el navegador mediante `localStorage` (Tareas vinculadas: `DEA-3`, `DEA-4`, `DEA-5`, `DEA-20`).
 
-### HU-02: Consumo de Datos de Empleados
+### DEA-6: Listado de empleados desde API externa (HU-02)
 * **Como:** Administrador autenticado.
 * **Quiero:** Visualizar una galería con los datos de los empleados de la empresa.
 * **Para:** Consultar su información de contacto de forma centralizada.
-* **Criterios de Aceptación:** Consumo estable de la API REST externa de JSONPlaceholder (`/users`). Mapeo y renderizado dinámico en el DOM de Avatar, Name, Email y la dirección completa concatenando `street`, `suite`, `city` y `zipcode`.
+* **Criterios de Aceptación:** Consumo estable de la API REST externa de JSONPlaceholder (`/users`). Mapeo y renderizado dinámico en el DOM de Avatar, Name, Email y la dirección completa concatenando `street`, `suite`, `city` y `zipcode` (Tareas vinculadas: `DEA-7`, `DEA-8`, `DEA-9`).
 
-### HU-03: Filtrado Dinámico de Personal
+### DEA-10: Filtrado de empleados (HU-03)
 * **Como:** Administrador autenticado.
 * **Quiero:** Filtrar a los empleados por la primera letra de su nombre.
 * **Para:** Agilizar las búsquedas operativas diarias.
-* **Criterios de Aceptación:** Botonera interactiva con el abecedario completo (A-Z) y opción para restablecer ("Todos"). Al pulsar una letra, la rejilla del DOM se actualiza en tiempo real de forma reactiva sin recargar la página. Si no existen coincidencias con la inicial seleccionada, la aplicación debe mostrar un mensaje informativo indicando la ausencia de registros.
+* **Criterios de Aceptación:** Botonera interactiva con el abecedario completo (A-Z) y opción para restablecer ("Todos"). Al pulsar una letra, la rejilla del DOM se actualiza en tiempo real de forma reactiva sin recargar la página. Si no existen coincidencias con la inicial seleccionada, la aplicación debe mostrar un mensaje informativo indicando la ausencia de registros (Tareas vinculadas: `DEA-11`, `DEA-12`, `DEA-14`).
 
-### HU-04: Cierre de Sesión Seguro (Logout)
+### DEA-13: Logout del dashboard administrativo (HU-04)
 * **Como:** Administrador autenticado.
 * **Quiero:** Disponer de una opción clara para cerrar mi sesión en la cabecera.
 * **Para:** Revocar los permisos de acceso al abandonar el equipo de trabajo.
-* **Criterios de Aceptación:** Botón dedicado que limpia las claves de sesión del almacenamiento local y redirige de manera forzosa al usuario al portal de login, bloqueando el reingreso directo por URL.
+* **Criterios de Aceptación:** Botón dedicado que limpia las claves de sesión del almacenamiento local y redirige de manera forzosa al usuario al portal de login, bloqueando el reingreso directo por URL (Tareas vinculadas: `DEA-15`, `DEA-16`).
 
-### HU-05: Control de Acceso y Redirección de Seguridad
+### DEA-17: Persistencia de sesión y seguridad de rutas / DEA-22: Control de Acceso y Redirección de Seguridad (HU-05)
 * **Como:** Administrador del sistema.
 * **Quiero:** Que la aplicación impida el acceso directo al panel privado si no existe una sesión activa en el navegador.
 * **Para:** Proteger la confidencialidad de los datos del personal y evitar accesos no autorizados a través de la URL.
-* **Criterios de Aceptación:** Al inicializarse el archivo `dashboard.html`, se evalúa mediante una estructura condicional la existencia de la clave de usuario en el `localStorage`. En caso de que el almacenamiento local se encuentre vacío, la aplicación intercepta la carga y ejecuta una redirección forzosa e inmediata hacia la pantalla de login principal (`index.html`).
-
+* **Criterios de Aceptación:** Al inicializarse el archivo `dashboard.html`, se evalúa mediante una estructura condicional la existencia de la clave de usuario en el `localStorage`. En caso de que el almacenamiento local se encuentre vacío, la aplicación intercepta la carga y ejecuta una redirección forzosa e inmediata hacia la pantalla de login principal (`index.html`) (Tareas vinculadas: `DEA-19`, `DEA-21`, `DEA-23`, `DEA-24`, `DEA-25`).
 ---
 
 ## ✍️ Autor
